@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
  *
  * @author Munaira
  */
-public class Produto extends JFrame implements ActionListener{
+public class Produto extends JFrame implements ActionListener {
 
     JLabel Tipo_produto, lProduto, consulta;
     JComboBox comboprotudo;
@@ -63,25 +63,25 @@ public class Produto extends JFrame implements ActionListener{
 
         JPanel p2 = new JPanel();
         p2.setLayout(new GridLayout(6, 2, 40, 20));
-        p2.setBorder(new EmptyBorder(10, 20, 20, 10));
+        p2.setBorder(new EmptyBorder(10, 20, 20, 500));
         p2.add(lProduto);
-        p2.add(new JLabel());
-        p2.add(comboprotudo);
-        p2.add(new JLabel());
         p2.add(Tipo_produto);
-        p2.add(new JLabel());
+        p2.add(comboprotudo);
         p2.add(txtipoProduto);
-        p2.add(new JLabel());
-        p2.add(new JLabel());
-
         JPanel p_pesquisar = new JPanel(new GridLayout(1, 2));
         p_pesquisar.setBorder(new EmptyBorder(0, 0, 0, 20));
         p_pesquisar.add(pesquisar);
+        p_pesquisar.add(new JLabel());
 
         p2.add(p_pesquisar);
+        p2.add(new JLabel());
+        p2.add(new JLabel());
+        p2.add(new JLabel());
+        p2.add(new JLabel());
+   
 
         JPanel paux = new JPanel(new GridLayout(1, 2, 20, 20));
-        paux.setBorder(new EmptyBorder(10, 100, -20, 20));
+        paux.setBorder(new EmptyBorder(10, 0, -20, 20));
         paux.add(sair);
         paux.add(voltar);
         p2.add(new JLabel());
@@ -92,19 +92,20 @@ public class Produto extends JFrame implements ActionListener{
         principal.setBorder(new EmptyBorder(0, 0, 30, 0));
         principal.add(pCima, BorderLayout.NORTH);
         principal.add(p2, BorderLayout.CENTER);
-        principal.setBounds(0,0,1366,768);
+        principal.setBounds(0, 0, 1366, 768);
         return principal;
     }
 
     private void ConfigurarJanela() {
         this.setLayout(null);
-        
-           ImageIcon img8 = new ImageIcon("src\\View\\imagens\\pesqusar.png");
-          JLabel limg=new JLabel();
-          limg.setIcon(img8);
-          limg.setBounds(690,70,700,550);
-        
-       this.add(limg);
+
+        ImageIcon img8 = new ImageIcon("src\\View\\imagens\\th (11)_1.jpg");
+
+        JLabel limg = new JLabel();
+        limg.setIcon(img8);
+        limg.setBounds(870, 70, 700, 550);
+
+        this.add(limg);
         this.add(GerirPainel());
         this.setTitle("produto");
         this.setSize(1366, 768);
@@ -119,8 +120,8 @@ public class Produto extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent ae) {
-      if(ae.getSource()==sair){
-          this.setVisible(false);
-      }
+        if (ae.getSource() == sair) {
+            this.setVisible(false);
+        }
     }
 }

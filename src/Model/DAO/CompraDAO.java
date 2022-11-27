@@ -1,7 +1,8 @@
 package Model.DAO;
 
 import Model.Entidades.ClienteM;
-import Model.Entidades.Compra;
+import Model.Entidades.CompraM;
+import View.Interface.Compra;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,8 +29,8 @@ public class CompraDAO {
         }
     }
 
-    public void inserir(Compra compra) {
-        String sql = "INSERT INTO Compra(idCliente,idProduto,dataComra) VALUES(?,?,?)";
+    public void inserir(CompraM compra) {
+        String sql = "INSERT INTO Cliente_Produto(idCliente,idProduto,Data_Compra) VALUES(?,?,?)";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, compra.getIdcliente());
@@ -41,11 +43,11 @@ public class CompraDAO {
         }
     }
 
-    public void actualizar(Compra compra) {
+    public void actualizar(CompraM compra) {
         try {
-            String sql = "UPDATE comopra SET idCliente = ?, IdProduto = ?, dataCompra = ?, WHERE idCliente = ?";
+            String sql = "UPDATE Cliente_Produto SET idCliente = ?, IdProduto = ?, dataCompra = ?, WHERE idCliente = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
-             ps.setInt(1, compra.getIdcliente());
+            ps.setInt(1, compra.getIdcliente());
             ps.setInt(2, compra.getIdProduto());
             ps.setString(3, compra.getDataCompra());
             ps.executeUpdate();
@@ -55,8 +57,8 @@ public class CompraDAO {
         }
     }
 
-    public void apagar(Compra compra) {
-        String sql = "DELETE FROM compra WHERE idCliente = ?";
+    public void apagar(CompraM compra) {
+        String sql = "DELETE FROM Cliente_Produto WHERE idCliente = ?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, compra.getIdcliente());
@@ -67,14 +69,14 @@ public class CompraDAO {
         }
     }
 
-    public List<Compra> todos() {
+    public List<CompraM> todos() {
         try {
-            String sql = "SELECT * from compra";
+            String sql = "SELECT * from Cliente_Produto";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            List<Compra> lista = new ArrayList<>();
+            List<CompraM> lista = new ArrayList<>();
             while (rs.next()) {
-                Compra c = new Compra();
+                CompraM c = new CompraM();
                 c.setIdcliente(rs.getInt("idCliente"));
                 c.setIdProduto(rs.getInt("idProduto"));
                 c.setDataCompra(rs.getString("dataComprs"));
@@ -86,4 +88,13 @@ public class CompraDAO {
             return new ArrayList<>();
         }
     }
+    // Cadastro de Cliente que realizaram a compra  //Cadastro de Compra(Relacao Cliente Produto)
+    public void CadastrarCliente_Produto(Compra c) {
+        CompraM cm = new CompraM(
+                Integer.parseInt(c.tIdCliente.getText()),
+                Integer.parseInt(c.tIdProduto.getText()),
+                c.tData.getText());
+        inserir(cm);
+    }
+
 }

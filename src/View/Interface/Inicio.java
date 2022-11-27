@@ -20,29 +20,29 @@ public class Inicio extends JFrame{
         
         JLabel ols=new JLabel("OLSystem");
                 Font fonteLetra = new Font(Font.SERIF, Font.BOLD, 100);
-                ols.setBounds(150, 0, 1366, 584);
+                ols.setBounds(450, 40, 1366, 584);
         ols.setFont(fonteLetra);
         ols.setForeground(Color.WHITE);
         
         
-         ImageIcon img7 = new ImageIcon("src\\View\\imagens\\Inicio.png");
-         JLabel img=new JLabel();
-         img.setIcon(img7);
-         img.setBounds(623, 70, 1366,704);
+//         ImageIcon img7 = new ImageIcon("src\\View\\imagens\\Inicio.png");
+//         JLabel img=new JLabel();
+//         img.setIcon(img7);
+//         img.setBounds(623, 70, 1366,704);
         
         JPanel aux=new JPanel();
         aux.setLayout(null);
         aux.add(ols);
-       aux.setBackground(Color.LIGHT_GRAY);
+       aux.setBackground(Color.BLUE);
         aux.setBounds(0, 0, 1366, 680);
 
-         ImageIcon imag1 = new ImageIcon("src\\View\\imagens\\771.gif");
-         JLabel im=new JLabel();
-         im.setIcon(imag1);
-         im.setBounds(647,290,1366,714);
+//         ImageIcon imag1 = new ImageIcon("src\\View\\imagens\\771.gif");
+//         JLabel im=new JLabel();
+//         im.setIcon(imag1);
+//         im.setBounds(647,290,1366,714);
         
-         this.add(im);
-        this.add(img);
+    //     this.add(im);
+   //     this.add(img);
         this.add(aux);
         this.setLayout(null);
         this.add(bar);
@@ -60,7 +60,7 @@ public class Inicio extends JFrame{
         while(cont<=100){
             bar.setValue(cont);
             try{
-            Thread.sleep(150); //tem haver com timing de execucao
+            Thread.sleep(150-120); //tem haver com timing de execucao
         }catch(InterruptedException e){
             //TODO Auto_Generated catch block
             e.printStackTrace();

@@ -9,18 +9,19 @@ package Model.Entidades;
  *
  * @author Omar Davide Xavier
  */
-public class Fornecedor {
-   int idfornecedor,contacto;
-   String nomefornec, endereco;
+public class FornecedorM {
 
-    public Fornecedor() {
+    int idfornecedor, contacto;
+    String nomefornec, endereco;
+
+    public FornecedorM() {
     }
 
-    public Fornecedor(int idfornecedor, int contacto, String nomefornec, String endereco) {
+    public FornecedorM(int idfornecedor, String nomefornec, String endereco, int contacto) {
         this.idfornecedor = idfornecedor;
-        this.contacto = contacto;
         this.nomefornec = nomefornec;
         this.endereco = endereco;
+        this.contacto = contacto;
     }
 
     public int getIdfornecedor() {
@@ -55,10 +56,4 @@ public class Fornecedor {
         this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Fornecedor{" + "idfornecedor=" + idfornecedor + ", contacto=" + contacto + ", nomefornec=" + nomefornec + '}';
-    }
-   
-    
 }

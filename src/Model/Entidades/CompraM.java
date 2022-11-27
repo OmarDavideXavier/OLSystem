@@ -9,14 +9,14 @@ package Model.Entidades;
  *
  * @author Omar Davide Xavier
  */
-public class Compra {
+public class CompraM {
 
     int idcliente, idProduto;
     String dataCompra;
-    public Compra() {
+    public CompraM() {
     }
 
-    public Compra(int idcliente, int idProduto, String dataCompra) {
+    public CompraM(int idcliente, int idProduto, String dataCompra) {
         this.idcliente = idcliente;
         this.idProduto = idProduto;
         this.dataCompra = dataCompra;
@@ -45,11 +45,4 @@ public class Compra {
     public void setDataCompra(String dataCompra) {
         this.dataCompra = dataCompra;
     }
-
-    @Override
-    public String toString() {
-        return "Compra{" + "idcliente=" + idcliente + ", idProduto=" + idProduto + ", dataCompra=" + dataCompra + '}';
-    }
-    
-    
 }

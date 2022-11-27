@@ -2,8 +2,14 @@ package Model.DAO;
 /*
  * @author Omar Davide Xavier
  */
-import Model.Entidades.Produto;
-import Model.Entidades.Venda;
+import Controller.cCliente;
+import Controller.cCompra;
+import Model.Entidades.ClienteM;
+import Model.Entidades.ProdutoM;
+import Model.Entidades.VendaM;
+import View.Interface.Cliente;
+import View.Interface.Compra;
+import View.Interface.Venda;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class VendaDAO{
 
@@ -25,8 +32,8 @@ public class VendaDAO{
         }
     }
 
-    public void inserir(Venda venda) {
-        String sql = "INSERT INTO venda(idfornecedor,idProduto,dataVenda) VALUES(?,?,?)";
+    public void inserir(VendaM venda) {
+        String sql = "INSERT INTO cliente_produto(idfornecedor,idProduto,dataVenda) VALUES(?,?,?)";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, venda.getIdfornecedor());
@@ -39,7 +46,7 @@ public class VendaDAO{
         }
     }
 
-    public void actualizar(Venda venda) {
+    public void actualizar(VendaM venda) {
         try {
             String sql = "UPDATE venda SET idFornecedor = ?, idProduto = ?, dataCompra = ? WHERE idFornecedor = ?";
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -53,7 +60,7 @@ public class VendaDAO{
         }
     }
 
-    public void apagar(Venda venda) {
+    public void apagar(VendaM venda) {
         String sql = "DELETE FROM venda WHERE idFornecedor = ?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
@@ -65,14 +72,14 @@ public class VendaDAO{
         }
     }
 
-    public List<Venda> todos() {
+    public List<VendaM> todos() {
         try {
             String sql = "SELECT * from venda";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            List<Venda> lista = new ArrayList<>();
+            List<VendaM> lista = new ArrayList<>();
             while (rs.next()) {
-                Venda c = new Venda();
+                VendaM c = new VendaM();
                 c.setIdfornecedor(rs.getInt("idFornecedor"));
                 c.setIdProduto(rs.getInt("idProduto"));
                 c.setDataVenda(rs.getString("dataVenda"));
@@ -84,4 +91,13 @@ public class VendaDAO{
             return new ArrayList<>();
         }
     }
+        public void CadastrarFornecedor_Produto(Venda v) {
+        VendaM cm = new VendaM(
+                Integer.parseInt(v.t_idFornecedor.getText()),
+                Integer.parseInt(v.t_idProduto.getText()),
+                v.t_data.getText());
+        inserir(cm);
+    }
+    
+    
 }

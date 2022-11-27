@@ -20,7 +20,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class DialSair extends JDialog{
 
-    JDialog d;
     public JButton sim, nao;
 
     public DialSair(JFrame janela) {

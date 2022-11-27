@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Model.Entidades;
 
 /**
@@ -10,9 +5,9 @@ package Model.Entidades;
  * @author Omar Davide Xavier
  */
 public class ClienteM {
-    
-    private String nome,endereco; 
-    private int idCliente,contacto;
+
+    private String nome, endereco;
+    private int idCliente, contacto;
 
     public ClienteM(int idCliente, String nome, String endereco, int contacto) {
         this.idCliente = idCliente;
@@ -55,11 +50,4 @@ public class ClienteM {
     public void setContacto(int contacto) {
         this.contacto = contacto;
     }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "idCliente=" + idCliente + ", nome=" + nome + ", endereco=" + endereco + ", contacto=" + contacto + '}';
-    }
-    
-    
 }

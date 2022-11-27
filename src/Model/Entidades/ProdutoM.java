@@ -9,30 +9,20 @@ package Model.Entidades;
  *
  * @author Omar Davide Xavier
  */
-public class Produto {
+public class ProdutoM {
     int idproduto;
-    String nome,tipoProduto;
+    String nome;
     float quantidade, preco;
 
-    public Produto() {
+    public ProdutoM() {
     }
 
-    public Produto(int idproduto, String nome, String tipoProduto, float quantidade, float preco) {
+    public ProdutoM(int idproduto, String nome,float quantidade, float preco) {
         this.idproduto = idproduto;
         this.nome = nome;
         this.quantidade = quantidade;
         this.preco = preco;
-        this.tipoProduto=tipoProduto;
     }
-
-    public String getTipoProduto() {
-        return tipoProduto;
-    }
-
-    public void setTipoProduto(String tipoProduto) {
-        this.tipoProduto = tipoProduto;
-    }
-
     
     public int getIdproduto() {
         return idproduto;
@@ -64,14 +54,5 @@ public class Produto {
 
     public void setPreco(float preco) {
         this.preco = preco;
-    }
-
-    @Override
-    public String toString() {
-        return "Produto{" + "idproduto=" + idproduto + ", nome=" + nome + ", tipoProduto=" + tipoProduto + ", quantidade=" + quantidade + ", preco=" + preco + '}';
-    }
-
- 
-    
-    
+    }   
 }

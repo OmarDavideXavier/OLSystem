@@ -74,6 +74,7 @@ public class Conversor extends JFrame implements ActionListener {
         gbc.gridy = 1;
         aux.add(c.texto, gbc);
 
+        c.PainelPrimario().setBackground(Color.BLUE);
         gbc.gridy = 2;
         gbc.gridx = 1;
         gbc.gridheight = 5;
@@ -108,7 +109,6 @@ public class Conversor extends JFrame implements ActionListener {
         gbc.gridx = 1;
         aux.add(pSairOk, gbc);
 
-        
         return aux;
     }
 
@@ -145,11 +145,10 @@ public class Conversor extends JFrame implements ActionListener {
         }
 
         if (ae.getSource() == BSair) {
-            this.setVisible(false);
+            this.dispose();
         }
 
     }
-
     public static void main(String[] args) {
         new Conversor();
     }

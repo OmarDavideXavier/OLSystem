@@ -9,14 +9,14 @@ package Model.Entidades;
  *
  * @author Omar Davide Xavier
  */
-public class Venda {
+public class VendaM {
     String dataVenda;
      int idfornecedor, idProduto;
 
-    public Venda() {
+    public VendaM() {
     }
 
-    public Venda(int idfornecedor, int idProduto, String dataVenda) {
+    public VendaM(int idfornecedor, int idProduto, String dataVenda) {
         this.idfornecedor = idfornecedor;
         this.idProduto = idProduto;
         this.dataVenda = dataVenda;
@@ -45,11 +45,4 @@ public class Venda {
     public void setDataVenda(String dataVenda) {
         this.dataVenda = dataVenda;
     }
-
-    @Override
-    public String toString() {
-        return "Venda{" + "idfornecedor=" + idfornecedor + ", idProduto=" + idProduto + ", dataVenda=" + dataVenda + '}';
-    }
-    
-    
 }

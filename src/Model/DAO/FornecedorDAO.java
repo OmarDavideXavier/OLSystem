@@ -5,8 +5,11 @@
  */
 package Model.DAO;
 
-import Model.Entidades.Compra;
-import Model.Entidades.Fornecedor;
+import Controller.cFornecedor;
+import Model.Entidades.CompraM;
+import Model.Entidades.FornecedorM;
+import View.Interface.Fornecedor;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,8 +30,10 @@ import java.util.logging.Logger;
 public class FornecedorDAO {
 
     private Connection conexao;
+    public JTable tabela;
 
     public FornecedorDAO() {
+        tabela = new JTable();
         try {
             this.conexao = BDconexao.getConnection();
         } catch (SQLException | ClassNotFoundException ex) {
@@ -32,8 +41,9 @@ public class FornecedorDAO {
         }
     }
 
-    public void inserir(Fornecedor fornecedor) {
-        String sql = "INSERT INTO fornecedor(idFornecedor,nome,endereco, contacto) VALUES(?,?,?,?)";
+    //Inserir Fornecedor
+    public void inserir(FornecedorM fornecedor) {
+        String sql = "INSERT INTO fornecedor(idFornecedor,Nome_Fornecedor,endereco, contacto) VALUES(?,?,?,?)";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, fornecedor.getIdfornecedor());
@@ -47,51 +57,82 @@ public class FornecedorDAO {
         }
     }
 
-    public void actualizar(Fornecedor fornecedor) {
-        try {
-            String sql = "UPDATE fornecedor SET idFornecedor = ?, nome = ?, endereco = ?, contacto=? WHERE idFornecedor = ?";
-            PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setInt(1, fornecedor.getIdfornecedor());
-            ps.setString(2, fornecedor.getNomefornec());
-            ps.setString(3, fornecedor.getEndereco());
-            ps.setInt(4, fornecedor.getContacto());
-            ps.executeUpdate();
-            ps.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
-    public void apagar(Fornecedor fornecedor) {
+    public void apagar(int id) {
         String sql = "DELETE FROM fornecedor WHERE idFornecedor = ?";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setInt(1, fornecedor.getIdfornecedor());
+            VerificaRemocao(id);
+            ps.setInt(1, id);
             ps.executeUpdate();
             ps.close();
+
         } catch (SQLException ex) {
             Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+//Metodo que retorna ArrayList do tipo FornecedorM
 
-    public List<Fornecedor> todos() {
+    private ArrayList<FornecedorM> todos() {
+        ArrayList<FornecedorM> lista = new ArrayList<>();
         try {
             String sql = "SELECT * from fornecedor";
             PreparedStatement ps = conexao.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            List<Fornecedor> lista = new ArrayList<>();
             while (rs.next()) {
-                Fornecedor c = new Fornecedor();
-                c.setIdfornecedor(rs.getInt("idFornecedor"));
-                c.setNomefornec(rs.getString("Nome"));
-                c.setEndereco(rs.getString("Endereco"));
-                 c.setContacto(rs.getInt("EContacto"));
-                lista.add(c);
+                FornecedorM e = new FornecedorM(
+                        rs.getInt("idFornecedor"),
+                        rs.getString("Nome_Fornecedor"),
+                        rs.getString("Endereco"),
+                        rs.getInt("Contacto")
+                );
+                lista.add(e);
             }
-            return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(FornecedorDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return new ArrayList<>();
+            Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+        return lista;
+    }
+    ///Mostrar Dados da BD na tabela
+
+    public JScrollPane MostrarTabelaTodos() {
+        tabela.setPreferredScrollableViewportSize(new Dimension(760, 430));
+        DefaultTableModel dtm = new DefaultTableModel();
+
+        Object[] coluna = new Object[4];
+        coluna[0] = "Id Fornecedor";
+        coluna[1] = "Nome";
+        coluna[2] = "Endereco";
+        coluna[3] = "Contacto";
+        dtm.setColumnIdentifiers(coluna);
+
+        Object[] dados = new Object[4];
+
+        for (int i = 0; i < todos().size(); i++) {
+            dados[0] = todos().get(i).getIdfornecedor() + "";
+            dados[1] = todos().get(i).getNomefornec();
+            dados[2] = todos().get(i).getEndereco();
+            dados[3] = todos().get(i).getContacto() + "";
+            dtm.addRow(dados);
+        }
+        tabela.setModel(dtm);
+
+        JScrollPane painelScrol = new JScrollPane(tabela);
+        return painelScrol;
+
+    }
+
+    private void VerificaRemocao(int id) {
+        int aux = 0;
+        for (int i = 0; i < todos().size(); i++) {
+            if (todos().get(i).getIdfornecedor() == id) {
+                aux = id;
+            }
+        }
+        if (aux == id) {
+            JOptionPane.showMessageDialog(null, "Removido com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "O funcionario nao existe");
         }
     }
 }

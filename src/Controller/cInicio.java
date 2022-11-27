@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Interface;
+package Controller;
+
+import View.Interface.Inicio;
 
 /**
  *
  * @author Omar Davide Xavier
  */
-public class Infosystem {
-    
+public class cInicio {
+    public static void main(String[] args) {
+        new Inicio();
+    }
 }

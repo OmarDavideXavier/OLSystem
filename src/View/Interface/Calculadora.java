@@ -38,7 +38,6 @@ public class Calculadora  implements ActionListener {
             case '/':
                 resultado = n1 / n2;
                 break;
-
         }
     }
 
@@ -76,8 +75,10 @@ public class Calculadora  implements ActionListener {
     public JPanel PainelPrimario() {
         JPanel global1 = new JPanel(new BorderLayout());
         global1.setBorder(new EmptyBorder(10,10,10,10));
-
+        global1.setBackground(Color.LIGHT_GRAY);
+        
         JPanel global2 = new JPanel(new GridLayout(4, 4, 10, 10));
+        global2.setBackground(Color.LIGHT_GRAY);
         global2.add(numBotao[1]);
         global2.add(numBotao[2]);
         global2.add(numBotao[3]);
@@ -96,6 +97,7 @@ public class Calculadora  implements ActionListener {
         global2.add(badicionar);
         
         JPanel global3 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        global3.setBackground(Color.LIGHT_GRAY);
         global3.add(bapagar);
         global3.add(bLimpar);
 
@@ -142,7 +144,6 @@ public class Calculadora  implements ActionListener {
             Operacao(operador, num1, num2);
 
             texto.setText((String.valueOf(resultado)));
-            System.out.println(resultado);
             num1 = resultado;
         }
 

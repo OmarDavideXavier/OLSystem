@@ -1,6 +1,10 @@
 package View.Interface;
 
+import Controller.cCliente;
+import Controller.cFornecedor;
+import Controller.cCompra;
 import View.DialogoUsuario.DialSair;
+import View.DialogoUsuario.InfoSystem;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dialog;
@@ -20,8 +24,8 @@ public class Menu extends JFrame implements ActionListener {
 
     JButton bVenda, bCompra, bProduto, bEstatistica, bCliente, bFornecedor, bRecibo, bInformacoes, bSair, bdSair;
     JLabel lVenda, lCompra, lProduto, lEstatistica, lCliente, lFornecedor, lRecibo, lInformacoes, LSair;
-    JDialog d;
     DialSair s=new DialSair(this);
+    InfoSystem ifs=new InfoSystem(this);
 
     public Menu() {
         
@@ -77,8 +81,6 @@ public class Menu extends JFrame implements ActionListener {
         bRecibo.setIcon(img6);
         bProduto.setIcon(img7);
         bSair.setIcon(img8);
-
-        DialogoInfoSystem();
         Eventos();
     }
 
@@ -88,14 +90,14 @@ public class Menu extends JFrame implements ActionListener {
 
         JPanel pCentral = new JPanel(new GridLayout(4, 5, 30, 0));
         pCentral.setBorder(new EmptyBorder(140, 300, 650, 300));
-
-        pCentral.add(bVenda);
+        
         pCentral.add(bCompra);
+        pCentral.add(bVenda);
         pCentral.add(bProduto);
         pCentral.add(bEstatistica);
         pCentral.add(new JLabel());
-        pCentral.add(lVenda);
         pCentral.add(lCompra);
+        pCentral.add(lVenda);
         pCentral.add(lProduto);
         pCentral.add(lEstatistica);
         pCentral.add(new JLabel());
@@ -135,28 +137,33 @@ public class Menu extends JFrame implements ActionListener {
             new Venda();
         }
         if (ae.getSource() == bCompra) {
-            new Compra();
+             new cCompra();      
+        }
+         if (ae.getSource() == bRecibo) {
+            new Recibo();
         }
         if (ae.getSource() == bProduto) {
             new Produto();
         }
+        if (ae.getSource() == bEstatistica) {
+            new EstatisiticaL();
+        }
         if (ae.getSource() == bSair) {
-            
             s.setVisible(true);
         }
         if (ae.getSource() == bCliente) {
-            new Cliente();
+            new cCliente();
             this.setVisible(false);
         }
         if (ae.getSource() == bFornecedor) {
-            new Fornecedor();
+            new cFornecedor();
 
             this.setVisible(false);
 
         }
         if (ae.getSource() == bInformacoes) {
 
-            d.setVisible(true);
+            ifs.setVisible(true);
 
         }if(ae.getSource()==s.nao){
             s.setVisible(false);
@@ -164,6 +171,7 @@ public class Menu extends JFrame implements ActionListener {
         if(ae.getSource()==s.sim){
             s.dispose();
             this.dispose();
+            
         }
 
 
@@ -179,65 +187,7 @@ public class Menu extends JFrame implements ActionListener {
         bFornecedor.addActionListener(this);
         s.nao.addActionListener(this);
         s.sim.addActionListener(this);
-
-    }
-
-    private void DialogoInfoSystem() {
-        d = new JDialog(this, "Acerca do Sistema", true);
-        d.setSize(443, 399);
-        d.setBounds(910, 10, 443, 399);
-
-        JPanel aux = new JPanel(new BorderLayout());
-        aux.setLayout(new BoxLayout(aux, BoxLayout.Y_AXIS));
-        aux.setBorder(new EmptyBorder(10,10,10,10));
-
-        JPanel pCima = new JPanel();
-        pCima.setBackground(Color.BLUE);
-        JLabel lCima = new JLabel("OLSystem");
-        lCima.setFont(new Font("Sans-serif", Font.BOLD, 40));
-        lCima.setForeground(Color.WHITE);
-        pCima.add(lCima);
-
-        JTextArea tarea = new JTextArea(10, 30);
-        tarea.setBackground(new Color(238, 238, 238));
-        tarea.setForeground(Color.BLUE);
-        tarea.setFont(new Font("Sans-serif", Font.BOLD, 18));
-        tarea.setText("OLSystem é um Sistema que oferece a possibilidade"
-                + " de automatizar tarefas manuais de gerenciamento de"
-                + " vendas e compras de produtos da agricultura assim como a pecuária."
-                + "\n"
-                + "\nVersao:1.0"
-                + "\nCompiladores JDK,NetBeans"
-                + "\nUltima Actualidacao:01/11/2022"
-                + "\nCriadores do Sistema: Omar David Xavier,"
-                + "\nLuis Junior Munaira");
-        tarea.setEditable(false);
-        tarea.setLineWrap(true);
-        tarea.setWrapStyleWord(true);
-        JScrollPane barra = new JScrollPane(tarea);
-        barra.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        barra.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
-        JLabel lgitHub=new JLabel("Repositorio Github:");
-        lgitHub.setFont(new Font("Sans-serif", Font.BOLD, 15));
-        JLabel linterface=new JLabel("Repositorio Interface:");
-         linterface.setFont(new Font("Sans-serif", Font.BOLD, 15));
-        
-        JPanel pBaixo=new JPanel(new GridLayout(2,2));
-        pBaixo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        
-         ConexaoODX c=new ConexaoODX();
-         
-        pBaixo.add(lgitHub);  
-        pBaixo.add(c.gitHub);
-        pBaixo.add(linterface);
-        pBaixo.add(c.interfac);
-        
-        
-        aux.add(pCima, BorderLayout.NORTH);
-        aux.add(barra, BorderLayout.CENTER);
-        aux.add(pBaixo,BorderLayout.SOUTH);
-
-        d.add(aux);
+        bEstatistica.addActionListener(this);
+        bRecibo.addActionListener(this);
     }
 }
