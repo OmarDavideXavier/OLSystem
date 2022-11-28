@@ -9,6 +9,7 @@ import Controller.cFornecedor;
 import Model.Entidades.CompraM;
 import Model.Entidades.FornecedorM;
 import View.Interface.Fornecedor;
+import View.Interface.Venda;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -134,5 +135,25 @@ public class FornecedorDAO {
         } else {
             JOptionPane.showMessageDialog(null, "O funcionario nao existe");
         }
+    }
+    
+    
+    public void CadastroFornecedor(Venda f){
+                    FornecedorM fm = new FornecedorM(
+                    Integer.parseInt(f.t_idFornecedor.getText()),
+                    f.t_nomeFornecedor.getText(),
+                    f.t_endereco.getText(),
+                    Integer.parseInt(f.t_telefone.getText()));
+            inserir(fm);
+            JOptionPane.showMessageDialog(null, "Operacao efectuada com sucesso!");
+    }
+       public void CadastroFornecedor(Fornecedor f){
+                    FornecedorM fm = new FornecedorM(
+                    Integer.parseInt(f.tIdFornecedor.getText()),
+                    f.tNomeFornecedor.getText(),
+                    f.tEndereco.getText(),
+                    Integer.parseInt(f.tContacto.getText()));
+            inserir(fm);
+            JOptionPane.showMessageDialog(null, "Operacao efectuada com sucesso!");
     }
 }

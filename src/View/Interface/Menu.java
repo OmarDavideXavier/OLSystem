@@ -3,6 +3,7 @@ package View.Interface;
 import Controller.cCliente;
 import Controller.cFornecedor;
 import Controller.cCompra;
+import Controller.cVenda;
 import View.DialogoUsuario.DialSair;
 import View.DialogoUsuario.InfoSystem;
 import java.awt.BorderLayout;
@@ -134,7 +135,7 @@ public class Menu extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == bVenda) {
-            new Venda();
+            new cVenda();
         }
         if (ae.getSource() == bCompra) {
              new cCompra();      

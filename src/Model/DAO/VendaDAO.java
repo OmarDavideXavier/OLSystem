@@ -1,4 +1,5 @@
 package Model.DAO;
+
 /*
  * @author Omar Davide Xavier
  */
@@ -20,7 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class VendaDAO{
+public class VendaDAO {
 
     private Connection conexao;
 
@@ -33,7 +34,7 @@ public class VendaDAO{
     }
 
     public void inserir(VendaM venda) {
-        String sql = "INSERT INTO cliente_produto(idfornecedor,idProduto,dataVenda) VALUES(?,?,?)";
+        String sql = "INSERT INTO fornecedor_produto(idfornecedor,idProduto,Data_Venda) VALUES(?,?,?)";
         try {
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setInt(1, venda.getIdfornecedor());
@@ -91,13 +92,13 @@ public class VendaDAO{
             return new ArrayList<>();
         }
     }
-        public void CadastrarFornecedor_Produto(Venda v) {
+    
+        //Cadastro de Venda (Relacionamento entre Fornecedor e Produto
+    public void CadastrarFornecedor_Produto(Venda v) { 
         VendaM cm = new VendaM(
                 Integer.parseInt(v.t_idFornecedor.getText()),
                 Integer.parseInt(v.t_idProduto.getText()),
                 v.t_data.getText());
         inserir(cm);
     }
-    
-    
 }

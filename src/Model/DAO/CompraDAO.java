@@ -88,7 +88,8 @@ public class CompraDAO {
             return new ArrayList<>();
         }
     }
-    // Cadastro de Cliente que realizaram a compra  //Cadastro de Compra(Relacao Cliente Produto)
+    // Cadastro de Cliente que realizaram a compra 
+    //Cadastro de Compra(Relacao Cliente Produto)  Tela Compra
     public void CadastrarCliente_Produto(Compra c) {
         CompraM cm = new CompraM(
                 Integer.parseInt(c.tIdCliente.getText()),

@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  * @author Omar Davide Xavier
  */
 public class cFornecedor implements ActionListener {
-
+    
     Fornecedor f = new Fornecedor();
     FornecedorDAO fDao = new FornecedorDAO();
-
+    
     public cFornecedor() {
         f.bRemover.addActionListener(this);
         f.bCadastrar.addActionListener(this);
@@ -33,7 +33,7 @@ public class cFornecedor implements ActionListener {
         f.bCancelar.addActionListener(this);
         f.bContinuar.addActionListener(this);
     }
-
+    
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == f.bCadastrar) {
             f.remove(f.pRemocao);
@@ -44,13 +44,7 @@ public class cFornecedor implements ActionListener {
             f.setVisible(true);
         }
         if (ae.getSource() == f.bValidar) {
-            FornecedorM fm = new FornecedorM(
-                    Integer.parseInt(f.tIdFornecedor.getText()),
-                    f.tNomeFornecedor.getText(),
-                    f.tEndereco.getText(),
-                    Integer.parseInt(f.tContacto.getText()));
-            fDao.inserir(fm);
-            JOptionPane.showMessageDialog(null, "Operacao efectuada com sucesso!");
+            fDao.CadastroFornecedor(f);
             f.tContacto.setText("");
             f.tEndereco.setText("");
             f.tIdFornecedor.setText("");
@@ -60,7 +54,7 @@ public class cFornecedor implements ActionListener {
             new Menu();
             f.dispose();
         }
-        if(ae.getSource()==f.bCancelar){
+        if (ae.getSource() == f.bCancelar) {
             f.tContacto.setText("");
             f.tEndereco.setText("");
             f.tIdFornecedor.setText("");
@@ -76,7 +70,7 @@ public class cFornecedor implements ActionListener {
             f.setVisible(true);
         }
         
-          if (ae.getSource() == f.bRemover) {
+        if (ae.getSource() == f.bRemover) {
             f.remove(f.pVisualizar);
             f.remove(f.limg);
             f.remove(f.pCadastro);
@@ -84,12 +78,12 @@ public class cFornecedor implements ActionListener {
             f.dispose();
             f.setVisible(true);
         }
-          if(ae.getSource()==f.bContinuar){
-              fDao.apagar(Integer.parseInt(f.tIdFor.getText()));
-          }
+        if (ae.getSource() == f.bContinuar) {
+            fDao.apagar(Integer.parseInt(f.tIdFor.getText()));
+        }
         
     }
-
+    
     public static void main(String[] args) {
         new cFornecedor();
     }

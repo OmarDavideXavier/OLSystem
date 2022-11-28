@@ -8,6 +8,7 @@ package Model.DAO;
 import Model.Entidades.FornecedorM;
 import Model.Entidades.ProdutoM;
 import View.Interface.Compra;
+import View.Interface.Venda;
 import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +29,7 @@ import javax.swing.table.DefaultTableModel;
 public class ProdutoDAO {
 
     private Connection conexao;
-    public float subtotal=0;
+    public float subtotal = 0;
 
     public ProdutoDAO() {
         try {
@@ -100,11 +101,10 @@ public class ProdutoDAO {
             return new ArrayList<>();
         }
     }
-    
-    
-      //Metodo que retorna Tzabela preenchida
+
+    //Metodo que retorna Tzabela preenchida
     public JScrollPane MostrarTabelaTodos() {
-        JTable tabela=new JTable();
+        JTable tabela = new JTable();
         tabela.setPreferredScrollableViewportSize(new Dimension(705, 420));
         DefaultTableModel dtm = new DefaultTableModel();
 
@@ -120,28 +120,33 @@ public class ProdutoDAO {
         for (int i = 0; i < todos().size(); i++) {
             dados[0] = todos().get(i).getIdproduto() + "";
             dados[1] = todos().get(i).getNome();
-            dados[2] = todos().get(i).getQuantidade()+"Kg";
+            dados[2] = todos().get(i).getQuantidade() + "Kg";
             dados[3] = todos().get(i).getPreco() + "MZN";
             dtm.addRow(dados);
-            subtotal=subtotal+todos().get(i).getPreco();
+            subtotal = subtotal + todos().get(i).getPreco();
         }
         tabela.setModel(dtm);
         JScrollPane painelScrol = new JScrollPane(tabela);
         return painelScrol;
     }
 
-    
-    
-    
-    
-    
-        public void CadastrarProduto(Compra c) {
+    //Cadastro produto na tela compra
+    public void CadastrarProduto(Compra c) {
         ProdutoM cm = new ProdutoM(
                 Integer.parseInt(c.tIdProduto.getText()),
-                c.combTipoProduto.getSelectedItem()+"",
+                c.combTipoProduto.getSelectedItem() + "",
                 Float.parseFloat(c.tQuantidade.getText()),
-        Float.parseFloat(c.tPreco.getText()));
+                Float.parseFloat(c.tPreco.getText()));
         inserir(cm);
     }
-    
+
+    //Cadastro produto na tela venda
+    public void CadastrarProduto(Venda v) {
+        ProdutoM cm = new ProdutoM(
+                Integer.parseInt(v.t_idProduto.getText()),
+                v.combo_nomeProduto.getSelectedItem() + "",
+                Float.parseFloat(v.t_quantidade.getText()),
+                Float.parseFloat(v.t_preco.getText()));
+        inserir(cm);
+    }
 }
