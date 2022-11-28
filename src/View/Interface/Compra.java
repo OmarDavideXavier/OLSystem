@@ -21,31 +21,30 @@ import java.util.Date.*;
 /*
 * @author Omar Davide Xavier
  */
-public class Compra extends JFrame implements ActionListener {
+public class Compra extends JFrame {
 
-    private float preco;
-    JPanel paineImg, PainelGLobal, pImagem, pTabela;
+    public float preco;
+    public JPanel paineImg, PainelGLobal, pImagem, pTabela;
     public JComboBox combTipoProduto;
-    JRadioButton radioCereais, radioGado;
+    public JRadioButton radioCereais, radioGado;
     ButtonGroup grupoBotao;
-    JLabel labidProduto, labQuantidade, labTipoProduto, labPrecoProduto, labDinheiro, labEnter, labSubtotal,
+    public JLabel labidProduto, labQuantidade, labTipoProduto, labPrecoProduto, labDinheiro, labEnter, labSubtotal,
             labData, labNomeCliente, labIdCliente, labContacto, labEndereco,
             labValorSubTotal, labPrecoRecebido, labTroco, f5, f2, f7, f9, imagem, LSubtotalvalor,
             LprecRecebidolvalor,
             LTrocovalor;
-    public JButton botaoValidar, botaoFinalizar, botaoCancelar,bok;
+    public JButton botaoValidar, botaoFinalizar, botaoCancelar, bok;
     public JTextField tQuantidade, tPreco, tDinheiro, tIdProduto, tData, tNomeCliente, tIdCliente, tContacto, tEndereco;
-    ImageIcon img;
-    ProdutoDAO p;
+    public ImageIcon img;
+    private ProdutoDAO p;
 
     public Compra() {
         InstanciarObjecto();
         ConfigurarJanela();
-        Eventos();
     }
 
-    String arrayGado[] = {"Cabrito", "Boi", "Vaca", "Suino"};
-    String arrayCereais[] = {"Arroz", "Milho", "Mandioca", "Trigo"};
+    public String arrayGado[] = {"Cabrito", "Boi", "Vaca", "Suino"};
+    public String arrayCereais[] = {"Arroz", "Milho", "Mandioca", "Trigo"};
 
     private void InstanciarObjecto() {
         p = new ProdutoDAO();
@@ -95,7 +94,7 @@ public class Compra extends JFrame implements ActionListener {
         f2 = new JLabel("F2-Eliminar Ultimo Item");
         f7 = new JLabel("F8-Apagar Tudo");
         f9 = new JLabel("F9-Alterar Preco");
-        bok=new JButton("Ok");
+        bok = new JButton("Ok");
 
         JLabel[] arrayFonte = {labQuantidade, labidProduto, labData, labIdCliente, labContacto, labEndereco, labTipoProduto, labPrecoProduto,
             labNomeCliente, labDinheiro, labEnter, labSubtotal,
@@ -256,79 +255,6 @@ public class Compra extends JFrame implements ActionListener {
         pTabela.add(p.MostrarTabelaTodos());
         pTabela.setBorder(BorderFactory.createTitledBorder("Lista de Produtos"));
         pTabela.setBackground(Color.BLUE);
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        if (ae.getSource() == radioCereais) {
-            img = new ImageIcon("src\\View\\imagens\\cereais.png");
-            imagem.setIcon(img);
-            pImagem.add(imagem);
-            for (int i = 0; i < arrayCereais.length; i++) {
-                combTipoProduto.removeItem(arrayGado[i]);
-                combTipoProduto.addItem(arrayCereais[i]);
-            }
-
-        } else if (ae.getSource() == radioGado) {
-            img = new ImageIcon("src\\View\\imagens\\gado.png");
-            imagem.setIcon(img);
-            pImagem.add(imagem);
-            combTipoProduto.setLayout(null);
-            for (int i = 0; i < arrayGado.length; i++) {
-                combTipoProduto.removeItem(arrayCereais[i]);
-                combTipoProduto.addItem(arrayGado[i]);
-            }
-        }
-        if (ae.getSource() == botaoFinalizar) {
-            this.setVisible(false);
-        }
-
-        if (ae.getSource() == botaoCancelar) {
-            tIdProduto.setText("");
-            tQuantidade.setText("");
-            tData.setText("");
-            tNomeCliente.setText("");
-            tContacto.setText("");
-            tPreco.setText("");
-            tDinheiro.setText("");
-            tIdCliente.setText("");
-            tEndereco.setText("");
-        }
-        if (ae.getSource() == combTipoProduto) {
-            if (combTipoProduto.getSelectedItem() == "Arroz") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 250;
-            } else if (combTipoProduto.getSelectedItem() == "Milho") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 350;
-            } else if (combTipoProduto.getSelectedItem() == "Mandioca") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 300;
-            } else if (combTipoProduto.getSelectedItem() == "Trigo") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 450;
-            } else if (combTipoProduto.getSelectedItem() == "Cabrito") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 450;
-            } else if (combTipoProduto.getSelectedItem() == "Boi") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 500;
-            } else if (combTipoProduto.getSelectedItem() == "Vaca") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 400;
-            } else if (combTipoProduto.getSelectedItem() == "Suino") {
-                preco = Float.parseFloat(tQuantidade.getText()) * 425;
-            }
-            tPreco.setText(preco + "");
-        }if(ae.getSource()==bok){
-        float auxvalor=(Float.parseFloat(tDinheiro.getText()))-preco;
-            LTrocovalor.setText(auxvalor+"MZN");
-            auxvalor=(Float.parseFloat(tDinheiro.getText()))-preco;
-            LprecRecebidolvalor.setText(Float.parseFloat(tDinheiro.getText())+"MZN");
-        }
-        
-    }
-
-    private void Eventos() {
-        bok.addActionListener(this);
-        combTipoProduto.addActionListener(this);
-        radioCereais.addActionListener(this);
-        radioGado.addActionListener(this);
-        botaoFinalizar.addActionListener(this);
-        botaoCancelar.addActionListener(this);
     }
 
     public static void main(String[] args) {
