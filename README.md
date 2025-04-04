@@ -46,7 +46,7 @@
 <h2>Capturas de Tela</h2>
 <ul>
   <li><strong>Tela Principal</strong>: Esta é a interface inicial do sistema OLSystem, exibindo o menu principal e opções para navegação.<br>
-    <img [src="Z/Captura%20de%20Ecr╞%20(382).png](https://github.com/OmarDavideXavier/OLSystem/blob/main/CapturasEcra/Captura%20de%20Ecr%C3%A3%20(391).png)" alt="Tela Principal"></li>
+  ![Image](https://github.com/user-attachments/assets/3dd6d029-ab14-4632-9fd4-a3d9bfcf268b)
   <li><strong>Gestão de Clientes</strong>: Interface para cadastro, edição e visualização de clientes do sistema.<br>
     <img src="Z/Captura%20de%20Ecr╞%20(383).png" alt="Cadastro de Clientes"></li>
   <li><strong>Gestão de Produtos</strong>: Interface para cadastro, edição e visualização de produtos agrícolas, gados e cereais.<br>
@@ -58,7 +58,7 @@
 </ul>
 
 h2>Observação</h2>
-Este projecto foi feito por mim, Omar Davide Xavier, quando estava a aprender programação orientada a objectos.
+<P>Este projecto foi feito por mim, Omar Davide Xavier, quando estava a aprender programação orientada a objectos.</P>
 
 <h2>Contribuição</h2>
 <p>Sinta-se à vontade para contribuir com melhorias ou correções no projeto.</p>
