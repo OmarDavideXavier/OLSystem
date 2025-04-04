@@ -44,18 +44,21 @@
 </ul>
 
 <h2>Capturas de Tela</h2>
-<ul>
-  <li><strong>Tela Principal</strong>: Esta é a interface inicial do sistema OLSystem, exibindo o menu principal e opções para navegação.<br>
-  ![Image](https://github.com/user-attachments/assets/3dd6d029-ab14-4632-9fd4-a3d9bfcf268b)
-  <li><strong>Gestão de Clientes</strong>: Interface para cadastro, edição e visualização de clientes do sistema.<br>
-    <img src="Z/Captura%20de%20Ecr╞%20(383).png" alt="Cadastro de Clientes"></li>
-  <li><strong>Gestão de Produtos</strong>: Interface para cadastro, edição e visualização de produtos agrícolas, gados e cereais.<br>
-    <img src="Z/Captura%20de%20Ecr╞%20(384).png" alt="Cadastro de Produtos"></li>
-  <li><strong>Relatórios</strong>: Painel para geração de relatórios personalizados sobre dados cadastrados no sistema.<br>
-    <img src="Z/Captura%20de%20Ecr╞%20(387).png" alt="Relatórios"></li>
-  <li><strong>Configurações do Sistema</strong>: Seção para configurar parâmetros importantes do sistema, como conexão com o banco de dados.<br>
-    <img src="Z/Captura%20de%20Ecr╞%20(390).png" alt="Configurações do Sistema"></li>
-</ul>
+![Image](https://github.com/user-attachments/assets/14eaab5e-79a7-4b42-aea5-63681e01e568)
+![Image](https://github.com/user-attachments/assets/8e049ed1-7040-419b-b0fa-a34986d0a31f)
+![Image](https://github.com/user-attachments/assets/cc1570d8-0279-48b1-af04-eeae68e1a23d)
+![Image](https://github.com/user-attachments/assets/4cae5b0d-de8a-4d17-b394-8179b243d29f)
+![Image](https://github.com/user-attachments/assets/64d2af83-bab8-4639-93a1-ca250e0e5044)
+![Image](https://github.com/user-attachments/assets/3cda3faf-4430-402d-8d7e-f7ac64e43fc6)
+![Image](https://github.com/user-attachments/assets/a843e624-e52f-4b2a-96ff-6f5cce0df50f)
+![Image](https://github.com/user-attachments/assets/36186197-7217-4b83-a9a2-3f484779c428)
+![Image](https://github.com/user-attachments/assets/58a572b9-3d9c-4d14-9085-18e7155dee0c)
+![Image](https://github.com/user-attachments/assets/cb4c6669-27a6-4d85-bfc1-9dd7c330cf98)
+![Image](https://github.com/user-attachments/assets/d638c546-384a-4f9a-925d-b153bee108aa)
+![Image](https://github.com/user-attachments/assets/253012ae-54e5-4b26-9a08-86dc825e5149)
+![Image](https://github.com/user-attachments/assets/7dc71f6f-17d8-474b-a976-1e7c35bfad7b)
+![Image](https://github.com/user-attachments/assets/303418d4-3449-435c-a5d3-e4822cda87d9)
+![Image](https://github.com/user-attachments/assets/1ef5b414-5b09-4f81-9239-9dc34748425a)
 
 h2>Observação</h2>
 <P>Este projecto foi feito por mim, Omar Davide Xavier, quando estava a aprender programação orientada a objectos.</P>
